@@ -69,7 +69,7 @@ Java Types
 * Package: Collection of types
 * Interface
 * Class
-* Object
+* ObjectfLyMd-mAkEr
 * Inheritance
 * Enum
 
