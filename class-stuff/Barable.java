@@ -1,0 +1,5 @@
+interface Barable {
+
+    void bar();
+
+}

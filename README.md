@@ -270,7 +270,8 @@ Arrays offers utility methods for primitive arrays
   * Expressed with static members and methods
   * Access of non-static members/methods is not possible from within a static context (there is no appropriate object yet...)
 * Interfaces
-  * Visibility is always public
+  * Visibility of interface is either public or package-private
+  * Visibility of methods is always public
   * Fields are always final
   * Non-static methods are either abstract or have a default modifier
 * Default methods
@@ -284,6 +285,40 @@ Arrays offers utility methods for primitive arrays
   * Classes w/o constructors get a no-args constructor which will be removed once any constructor is provided
   * Subclass constructors MUST call a superclass constructor; either by calling another constructor with this(...) are with super(...)
   * Remark: No-args constructor calls are added automatically by the compiler
+* Nested classes
+  * Classes nested inside another class, e.g. inner class or static inner class
+* Static nested class
+  * Conceptionally like a normal class, but nested inside another class for encapsulation reasons
+  * Can access private static members of the outer class (unlike a normal class)
+  * Cannot access non-static members of the outer class (like a normal class)
+  * Creation: new Outer.Inner()
+* Inner classes
+  * Bound to an instance of the outer class
+  * Can access enclosing class: Outer.this.someField, Outer.this.someMethod()     
+* Special types of inner classes
+  * Local class: Like local field; no visibility keyword
+  * Anonymous class: Class w/o name, only an interface declaraction with an ad-hoc implementation. If only one method must be overridden, the anonymous class can be replaced by a lambda.
+* Parameter vs. arguments
+  * Parameters = List of accepted data types
+  * Arguments = Concrete values as a concrete list of parameters
+  * Arguments are
+    * Primitive types
+    * Object types
+    * Lambdas
+    * Method references
+* Shadowing vs. Hiding
+  * Shadowing: Same name within different scopes in the same class
+  * Hiding: Same name within an inheritanc hierarchy
+* Super
+  * Used to refer to overridden methods
+  * Used to refer to hidden fields (this would be used for inherited fields)
+  * Used to call super class constructors
+  * Every constructor must make a super class constructor call; if none is given the compiler adds a call to the no-args constructor using super() which can result in a compile-time error if none such constructor exists
+* This
+  * To mitigate shadowing for constructors/setter methods, e.g. setX(int x) { this.x = x; }
+  * To call constructors from within another constructor; must occur in first position    
+     
+     
   
 ```java
 class Foo {
