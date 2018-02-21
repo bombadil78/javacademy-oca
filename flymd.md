@@ -2,13 +2,13 @@
 
 ## Java Basics
 
-Variables
+### Variables
 - Instance variable (non-static field)
 - Class variable (static field)
 - Local variable
 - Parameter
 
-Comments
+### Comments
 ```java
 // single-line comment; ignored until end of line
 
@@ -23,13 +23,14 @@ Comments
   
 ```
 
-Main method
+### Main method
 
 Every java application must have at least one main() method
 ```java
 public static main(String[] args) { ... }
 ```
 
+### Packages 
 Packages creates a new namespaces. Public types from a package can be used *outside* by doing one of the following:
 * Packages 
 * Import a single type from the package, optionally with one or all of its inner types
@@ -60,22 +61,22 @@ import static org.acme.Foo.fooBar;
 fooBar(); // can use fooBar() directly instead of Foo.fooBar()
 ```
 
-Java Platform
+### Java Platform
 * Java code is written in .java files and compiled to byte-code in .class files
 * The JVM interprets byte-code; there exists JVMs for all kinds of hardware platforms, so that is why Java is platform-independent
 * The Java API is a collection of packages that can be used
 
-Java Types
+### Java Types
 * Package: Collection of types
 * Interface
 * Class
-* ObjectfLyMd-mAkEr
+* Object
 * Inheritance
 * Enum
 
 ## Working with Java Data Types
 
-Initialization
+### Initialization
 * Static fields
   * Field initialization
   * Static block initialization (order matters!) or static methods
@@ -105,7 +106,7 @@ class Foo {
 }
 ```
 
-Primitives
+### Primitives
 * byte (8-bit signed, default = 0)
 * short (16-bit signed, default = 0)
 * int (32-bit signed, default = 0)
@@ -155,7 +156,7 @@ float f3 = 3._1415F  // nok <= dot is touched
 float f4 = 3.14_15_F // nok <= F is touched
 ```  
 
-Numbers
+### Numbers
 * There are wrapper classes for the primitive types: Byte, Short, Integer, Long, Float, Double
 * The wrapper classes are of supertype Number
   * xyValue(): Converts to primitive type, e.g. someInt.byteValue()
@@ -168,12 +169,12 @@ Numbers
   * Useful constant such as MIN_VALUE, MAX_VALUE
   * Conversion methods
 
-Inheritance
+## Inheritance
 * Subclass inherits all public and protected methods
 * If subclass is in same package then also package-private methods are inherited
 * Hiding: Compiler warns if methods are hidden (e.g. super.foo() is protected and sub.foo() is private), but not for fields
 
-Operators
+## Operators
 * Postfix
 * Unary: { + - ++ -- ! }
 * Arithmetic
@@ -188,7 +189,7 @@ Operators
 * Ternary: { ?: }
 * Assignment: { = }
 
-Object methods
+## Object methods
 * equals()
   * Are objects considered equal? Default implementation uses object equality check
   * o1.equals(o2) => o1.hashCode() == o2.hashCode() MUST hold, but o1.hashCode == o2.hashCode => o1.equals(o2) MAY hold
@@ -213,11 +214,17 @@ Control flow
   * Switch on Strings
   * Hop to case label, then execute all other cases in order until end is reached, only exit on break
 
+## Arrays
+* Declaration: identifier type[] OR identifier[] type
+* Creation: new type[]
+* Initialization: arr[atIndex] = 1 OR arr = { 1, 2, 3 } (includes creation)
+* Access: arr[atIndex]
+
 Questions
 * What are valid names for variables?
 * Multiple main() methods?
 * Are packages bound to directory structure? No
-
+fLyMd-mAkEr
 Topics
 * Naming: Classes, methods, fields
 * Visibility

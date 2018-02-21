@@ -2,13 +2,13 @@
 
 ## Java Basics
 
-Variables
+### Variables
 - Instance variable (non-static field)
 - Class variable (static field)
 - Local variable
 - Parameter
 
-Comments
+### Comments
 ```java
 // single-line comment; ignored until end of line
 
@@ -23,13 +23,14 @@ Comments
   
 ```
 
-Main method
+### Main method
 
 Every java application must have at least one main() method
 ```java
 public static main(String[] args) { ... }
 ```
 
+### Packages 
 Packages creates a new namespaces. Public types from a package can be used *outside* by doing one of the following:
 * Packages 
 * Import a single type from the package, optionally with one or all of its inner types
@@ -60,12 +61,12 @@ import static org.acme.Foo.fooBar;
 fooBar(); // can use fooBar() directly instead of Foo.fooBar()
 ```
 
-Java Platform
+### Java Platform
 * Java code is written in .java files and compiled to byte-code in .class files
 * The JVM interprets byte-code; there exists JVMs for all kinds of hardware platforms, so that is why Java is platform-independent
 * The Java API is a collection of packages that can be used
 
-Java Types
+### Java Types
 * Package: Collection of types
 * Interface
 * Class
@@ -75,7 +76,7 @@ Java Types
 
 ## Working with Java Data Types
 
-Initialization
+### Initialization
 * Static fields
   * Field initialization
   * Static block initialization (order matters!) or static methods
@@ -105,7 +106,7 @@ class Foo {
 }
 ```
 
-Primitives
+### Primitives
 * byte (8-bit signed, default = 0)
 * short (16-bit signed, default = 0)
 * int (32-bit signed, default = 0)
@@ -155,7 +156,7 @@ float f3 = 3._1415F  // nok <= dot is touched
 float f4 = 3.14_15_F // nok <= F is touched
 ```  
 
-Numbers
+### Numbers
 * There are wrapper classes for the primitive types: Byte, Short, Integer, Long, Float, Double
 * The wrapper classes are of supertype Number
   * xyValue(): Converts to primitive type, e.g. someInt.byteValue()
@@ -168,12 +169,12 @@ Numbers
   * Useful constant such as MIN_VALUE, MAX_VALUE
   * Conversion methods
 
-Inheritance
+## Inheritance
 * Subclass inherits all public and protected methods
 * If subclass is in same package then also package-private methods are inherited
 * Hiding: Compiler warns if methods are hidden (e.g. super.foo() is protected and sub.foo() is private), but not for fields
 
-Operators
+## Operators
 * Postfix
 * Unary: { + - ++ -- ! }
 * Arithmetic
@@ -188,7 +189,7 @@ Operators
 * Ternary: { ?: }
 * Assignment: { = }
 
-Object methods
+## Object methods
 * equals()
   * Are objects considered equal? Default implementation uses object equality check
   * o1.equals(o2) => o1.hashCode() == o2.hashCode() MUST hold, but o1.hashCode == o2.hashCode => o1.equals(o2) MAY hold
@@ -212,6 +213,94 @@ Control flow
   * Switch on Enums
   * Switch on Strings
   * Hop to case label, then execute all other cases in order until end is reached, only exit on break
+
+## Arrays
+* Declaration: identifier type[] OR identifier[] type
+* Creation: new type[]
+* Initialization: arr[atIndex] = 1 OR arr = { 1, 2, 3 } (includes creation)
+* Access: arr[atIndex]
+
+Arrays offers utility methods for primitive arrays 
+* binarySearch(haystackArr, needle)
+* copyOf(orig, newLength)
+* copyOfRange(orig, fromIdx, toIdx)
+* deepEquals(arrOne, arrTwo)
+* deepHashCode(arrOne, arrTwo)
+* fill()
+* sort()
+* stream()
+* Parallel variants: parallelSort(), ...
+
+## Control flow 
+* if-then / if-then-else
+* do-loop / while-loop / for-loop
+* Branching statements
+  * break: Breaks out of the innermost xy-loop or switch statement
+  * break someLabel: Used to break out of a label; label must be defined right before construct
+  * continue
+  * continue someLabel
+  * return *(value)+*
+  
+## Methods
+* When does a method return?
+  * All statements finished
+  * return statement executed
+  * Exception thrown  
+* Covariant return types: Return type can be of subtype of declared type 
+* Ingredients
+  * Modifier
+  * Return type
+  * Method name
+  * Parameter list
+  * Exception list
+  * Method body
+* Method signature = Method name + parameter list
+* Overload: Same method name, but different parameter list
+* Overriding: A method in a subclass qualifies if ...
+  * It has the same method signature (Contravariant parameter types do NOT qualify for an override)
+  * It is at least as visible as the overridden method
+  * The return type is in covariant position
+  * The exceptions in the exception list are in covariant positions
+  * The static-/non-static ness does not change
+* Hiding
+  * Subclass defines same static method as superclass
+  * Can only occur between static methods
+  * Subclass hides implementation of superclass' method
+* Globals
+  * Expressed with static members and methods
+  * Access of non-static members/methods is not possible from within a static context (there is no appropriate object yet...)
+* Interfaces
+  * Visibility is always public
+  * Fields are always final
+  * Non-static methods are either abstract or have a default modifier
+* Default methods
+  * Changes in interfaces do not break implementors
+  * Normal implementations in a class take precedence over default implementations (that's why it's called default)
+  * Default implementations can override other default implementations
+  * Diamond case
+    * A class that inherits identical default methods from its ancestors must implement it
+    * Class might be abstract; override still needed in order to resolve ambiguous situation
+* Constructors
+  * Classes w/o constructors get a no-args constructor which will be removed once any constructor is provided
+  * Subclass constructors MUST call a superclass constructor; either by calling another constructor with this(...) are with super(...)
+  * Remark: No-args constructor calls are added automatically by the compiler
+  
+```java
+class Foo {
+    protected Object foo() { return null; }
+    protected String bar() { return null; }
+}
+
+class FooBar extends Foo {
+
+    @Override
+    protected String foo() { return null; }
+    
+    @Override
+    protected Object bar() { return null; }
+}
+```
+  
 
 Questions
 * What are valid names for variables?
