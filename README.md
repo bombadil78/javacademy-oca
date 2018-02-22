@@ -390,6 +390,47 @@ class FooBar extends Foo {
     * Get portion: substring(), split(), trim(), ...
     * Search: indexOf(), lastIndexOf()
     * Replace: replace(), replaceAll(), replaceFirst()
+* Basic date abstractions
+  * Temporal
+    * Representation of date/time
+    * Offers: minus(temporalAmount), plus(temporalAmount), with(temporalAdjuster)
+    * Implementations: Instant, LocalTime, LocalDate, LocalDateTime, YearMonth, MonthDay, Year  
+  * TemporalAmount
+    * Representation of a duration
+    * Offers: addTo(temporal), substractFrom(temporal)
+    * Implementations: Duration (seconds semantics), Period (day/month/year semantics)
+  * TemporalUnit
+    * Unit to measure date/time  
+    * Offers: between(unit1, unit2)
+* Date
+  * Date representation
+    * LocalDate
+      * now(), of(year, month, day), with(temporalAdjuster), ...
+    * YearMonth
+      * now(), of(year, month), lengthOfMonth(), ...
+    * MonthDay
+      * now(), of(month, day), isValidYear(someYear)
+    * Year
+      * now(), of(year), isLeap()
+  * LocalTime
+    * Time without time zone, no date (!)
+    * Immutable
+    * Offers: now(), of(), getHour(), getMinute(), getSecond(), isAfter(other), isBefore(other)
+    * Useful constans like MAX, MIN, MIDNIGHT, NOON
+  * LocalDateTime
+    * Date and Time
+    * Combination of LocalTime and LocalDate
+    * Offers: now(), of(...), plusMonths(i), minusDays(2), ...
+  * DateTimeFormatter
+  * Period = Quantity of time in year/month/day
+    * Quantities: YEARS, MONTHS, DAYS
+    * Calculation based on year/month/day semantics
+    * Offers: of(), plus(), minus(), between(t1, t2), addTo(someDate), ...
+  * Duration = Quantity of time in seconds
+    * Calculation based on exact seconds
+    * Offers: of(), plus(), minus(), between(t1, t2), ...
+* Date exceptions
+  * UnsupportedTemporalTypeException is thrown if time granularity between amounts, units and durations exist    
 
 ## Lambdas  
 

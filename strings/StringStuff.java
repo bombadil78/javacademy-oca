@@ -30,18 +30,25 @@ public class StringStuff {
     public static void manipulate() {
         String s = "Hello World";
 
-        // Extract substrings
+        // EXTRACTION
         System.out.println(s.substring(1)); // to the end
         System.out.println(s.substring(2, 3)); // in-between (start inclusive, to exclusive)
         // System.out.println(s.substring(3, -2)); // negative indices not allowed, e.g. from three to the second last
 
-        // Search character positions
-        System.out.println(s.indexOf('o'));
-        System.out.println(s.lastIndexOf('o'));
-
-        // Contains works on CharSequence
+        // SEARCH
+        System.out.println(s.indexOf('o')); // find from beginning
+        System.out.println(s.lastIndexOf('o'));  // find from end
+        System.out.println(s.indexOf('o', 5)); // find from position
         StringBuilder sb = new StringBuilder("ll");
-        System.out.println(s.contains(sb));
+        System.out.println(s.contains(sb)); // Contains works on any CharSequence (!)
+
+        // REPLACE
+        String tt, t = s;
+        do {
+            tt = t;
+            t = t.replaceFirst("o", "");
+        } while (!t.equals(tt));
+        System.out.println(t);
     }
 
     public static void main(String args[]) {
