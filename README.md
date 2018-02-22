@@ -430,7 +430,17 @@ class FooBar extends Foo {
     * Calculation based on exact seconds
     * Offers: of(), plus(), minus(), between(t1, t2), ...
 * Date exceptions
-  * UnsupportedTemporalTypeException is thrown if time granularity between amounts, units and durations exist    
+  * UnsupportedTemporalTypeException is thrown if time granularity between amounts, units and durations exist
+* List = Ordered collection that allows duplicates
+  * Equality semantics = Equal length, object at every position are equal
+  * Methods
+    * Creation: Copy-constructor, addAll(otherCollection), collect(Collectors.toList()), Arrays.asList() <= 
+    * Positional access: get(i), set(i), add/addAll() (= add to end)
+    * Iteration: for-loop, foreach-loop, stream().forEach/map/filter, 
+    * Range-view
+* Implementations  
+  * ArrayList
+  * LinkedList
 
 ## Lambdas  
 
