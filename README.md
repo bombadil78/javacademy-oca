@@ -241,7 +241,7 @@ Arrays offers utility methods for primitive arrays
   * continue someLabel
   * return *(value)+*
   
-## Methods
+## Methods 
 * When does a method return?
   * All statements finished
   * return statement executed
@@ -255,6 +255,14 @@ Arrays offers utility methods for primitive arrays
   * Exception list
   * Method body
 * Method signature = Method name + parameter list
+* Parameter vs. arguments
+  * Parameters = List of accepted data types
+  * Arguments = Concrete values as a concrete list of parameters
+  * Arguments are
+    * Primitive types
+    * Object types
+    * Lambdas
+    * Method references  
 * Overload: Same method name, but different parameter list
 * Overriding: A method in a subclass qualifies if ...
   * It has the same method signature (Contravariant parameter types do NOT qualify for an override)
@@ -266,6 +274,8 @@ Arrays offers utility methods for primitive arrays
   * Subclass defines same static method as superclass
   * Can only occur between static methods
   * Subclass hides implementation of superclass' method
+  
+# Classes
 * Globals
   * Expressed with static members and methods
   * Access of non-static members/methods is not possible from within a static context (there is no appropriate object yet...)
@@ -298,14 +308,6 @@ Arrays offers utility methods for primitive arrays
 * Special types of inner classes
   * Local class: Like local field; no visibility keyword
   * Anonymous class: Class w/o name, only an interface declaraction with an ad-hoc implementation. If only one method must be overridden, the anonymous class can be replaced by a lambda.
-* Parameter vs. arguments
-  * Parameters = List of accepted data types
-  * Arguments = Concrete values as a concrete list of parameters
-  * Arguments are
-    * Primitive types
-    * Object types
-    * Lambdas
-    * Method references
 * Shadowing vs. Hiding
   * Shadowing: Same name within different scopes in the same class
   * Hiding: Same name within an inheritanc hierarchy
@@ -317,8 +319,13 @@ Arrays offers utility methods for primitive arrays
 * This
   * To mitigate shadowing for constructors/setter methods, e.g. setX(int x) { this.x = x; }
   * To call constructors from within another constructor; must occur in first position    
-     
-     
+* Abstract classes
+  * If declared abstract, they cannot be instantiated
+  * They can declare abstract methods that must be implemented by any concrete subclass
+  * Used for code reuse whereas interfaces are used for subtyping
+* Interfaces
+  * Can contain abstract, default or static methods
+  * Can contain constants        
   
 ```java
 class Foo {
@@ -328,14 +335,50 @@ class Foo {
 
 class FooBar extends Foo {
 
+    // covariant position of return type => OK
     @Override
     protected String foo() { return null; }
     
+    // contravariant position of return type => NOK
     @Override
     protected Object bar() { return null; }
 }
 ```
-  
+
+## Exceptions
+* Catch or specify requirement: Code throwing an exception must either catch it or declare it to be thrown
+* Three types of exceptions
+  * Recoverable problems (belongs to checked exceptions)
+    * Problems a program can recover from, e.g. invalid user input
+    * Subject to the catch or specify requirement
+    * Throwable > Exception or any subclass except RuntimeException
+    * The compiler checks them by imposing the check or specify requirement 
+  * Errors (belongs to unchecked exceptions)
+    * Abnormal conditions, that should never occur, e.g. disk failure
+    * Throwable > Error or any subclass
+    * NOT subject to the catch or specify requirement
+  * Internal problems (belongs to unchecked exceptions)
+    * Program a program cannot recover from, e.g. programming error, inappropriate usage of API, ...
+    * Throwable > Exception > RuntimeException or any subclass
+    * NOT subject to the catch or specify requirement
+* try-catch-finally
+  * try: Encloses exception throwing code
+  * catch
+    * Defines exception handlers connected to the try block 
+    * Exception handler can do error recovery, ask user input or propagate the error to another context
+    * Finds first match using dynamic binding
+    * List of exceptions allowed, e.g. catch(SomeException | SomeOtherException ex) <= ex is final (!)
+  * finally
+    * Executed in any case (passing exception vs. not passing exception)
+    * Used for clean-up code
+* try-with-resources
+  * Used for resource closing and analogue to ... finally { if (res != null) res.close(); }
+  * try (<resource-statement(s)>) { ... } will close any resources, indendent from wheter an exception occured or not, so there is no need for the null-check
+  * Resource is     
+     
+## Lambdas  
+
+## Java API Selection
 
 Questions
 * What are valid names for variables?
