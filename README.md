@@ -376,9 +376,24 @@ class FooBar extends Foo {
   * try (<resource-statement(s)>) { ... } will close any resources, indendent from wheter an exception occured or not, so there is no need for the null-check
   * Resource is     
      
+## Java API Selection
+
+* Conversions (Wrapper vs. Primitive vs. String)
+  * Convert to wrapper: valueOf(other)
+  * Convert to String: toString() on instance (for wrapper) or static toString(i) for Primitive
+  * Convert to Primitive: parseXXX() from String, xxxValue() from wrapper
+* String
+  * CharSequence is the superclass of String, StringBuilder, StringBuffer
+    * Offers: length(), subSequence(int start, int end), charAt(int index), toString()
+  * Comparision, e.g. startsWith(String prefix, int offset), regionMatches(...)
+  * Manipulation (always returns a new String)
+    * Get portion: substring(), split(), trim(), ...
+    * Search: indexOf(), lastIndexOf()
+    * Replace: replace(), replaceAll(), replaceFirst()
+
 ## Lambdas  
 
-## Java API Selection
+
 
 Questions
 * What are valid names for variables?
