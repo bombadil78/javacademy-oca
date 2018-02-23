@@ -431,14 +431,26 @@ class FooBar extends Foo {
     * Offers: of(), plus(), minus(), between(t1, t2), ...
 * Date exceptions
   * UnsupportedTemporalTypeException is thrown if time granularity between amounts, units and durations exist
+* Collection interface
+  * add(), addAll()
+  * size(), isEmpty()
+  * remove(Object o) vs. removeAll(Collection<?> other)
+  * retainAll(Collection<? extends E> other)
+  * Iteration
+    * forEach() (Stream API)
+    * for-each loop
+    * Iterator: hasNext(), next(), remove(), forEachRemaining()
+  * Collections: Utility methods like shuffle(), reverse(), rotate(), max(), min(), ...
+
 * List = Ordered collection that allows duplicates
-  * Equality semantics = Equal length, object at every position are equal
-  * Methods
-    * Creation: Copy-constructor, addAll(otherCollection), collect(Collectors.toList()), Arrays.asList() <= 
+  * Offers (in addition to collection): 
     * Positional access: get(i), set(i), add/addAll() (= add to end)
-    * Iteration: for-loop, foreach-loop, stream().forEach/map/filter, 
-    * Range-view
-* Implementations  
+    * Iteration: for-each loop, iterato 
+    * Range-views
+  * Equality semantics: Equal length && objects at every position are equal
+  * Arrays.asList() offers is a view based on an underlying array ("write through") => Arrays$ArrayList
+
+* List implementations  
   * ArrayList
   * LinkedList
 
