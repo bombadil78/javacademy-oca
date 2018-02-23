@@ -1,7 +1,7 @@
 public class Construction {
 
     public static void main(String args[]) {
-        A a = new A(1,1 );
+        TargetType.A a = new TargetType.A(1,1 );
     }
 }
 
@@ -9,7 +9,7 @@ class A {
     public A(int i, int j) {}
 }
 
-class B extends A {
+class B extends TargetType.A {
 
     public B(int i) {
         // System.out.println(); not allowed

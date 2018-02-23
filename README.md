@@ -264,7 +264,7 @@ Arrays offers utility methods for primitive arrays
     * Lambdas
     * Method references  
 * Overload: Same method name, but different parameter list
-* Overriding: A method in a subclass qualifies if ...
+* Overriding: TargetType.A method in a subclass qualifies if ...
   * It has the same method signature (Contravariant parameter types do NOT qualify for an override)
   * It is at least as visible as the overridden method
   * The return type is in covariant position
@@ -289,7 +289,7 @@ Arrays offers utility methods for primitive arrays
   * Normal implementations in a class take precedence over default implementations (that's why it's called default)
   * Default implementations can override other default implementations
   * Diamond case
-    * A class that inherits identical default methods from its ancestors must implement it
+    * TargetType.A class that inherits identical default methods from its ancestors must implement it
     * Class might be abstract; override still needed in order to resolve ambiguous situation
 * Constructors
   * Classes w/o constructors get a no-args constructor which will be removed once any constructor is provided
@@ -466,7 +466,11 @@ class FooBar extends Foo {
   * Capturing an instance variable does not mean copying, because the instance variable will continue to live even after the method finishes
   * Copying done implicitly, so it is not evident that changes of the variable inside would not be reflected outside (and vice-versa), so this is why it is prohibited in Java
   * To the rescue: Use array reference to cheat the compiler
-
+* Local and anonymous classes have their own *this* context, lambdas do not; but both have the restriction that local variables used must be final or effectively final
+* Target type
+  * The compiler must infer the target type of a lambda from its context (it is not declared in the lambda)
+  * Valid contexts are variable declarations, return statements, array initalizers, ...
+  * What if multiple 
 
 
 Questions
