@@ -455,6 +455,17 @@ class FooBar extends Foo {
   * LinkedList
 
 ## Lambdas  
+* Motivation: Anonymous classes with only one method are cumbersome to write
+* Predicate<T>: boolean test(T t)
+* Producer<T>: T produce()
+* Consumer<T>: void consume(T t)
+* Function<T, U>: U apply(T t)
+* Then use filter() with predicate, map() with Function, forEach() with Consumer
+* Anonymous classes and lambdas can only capture final or effectively final **local** variables
+  * Capturing a local variable means copying to the anonymous class (Java approach), because after the method finishes, the local variable will be gone, but the code relying on it, might be executed later.
+  * Capturing an instance variable does not mean copying, because the instance variable will continue to live even after the method finishes
+  * Copying done implicitly, so it is not evident that changes of the variable inside would not be reflected outside (and vice-versa), so this is why it is prohibited in Java
+  * To the rescue: Use array reference to cheat the compiler
 
 
 
