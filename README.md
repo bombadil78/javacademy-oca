@@ -472,6 +472,18 @@ class FooBar extends Foo {
   * Valid contexts are variable declarations, return statements, array initalizers, ...
   * What if multiple 
 
+# Feedback
+## Session 26.02.2018
+* java.util.time: Repeat the main abstractions, main classes
+* Most important exceptions & when they are thrown, exception class hierarchy 
+* Java Primitive Types: What they are, ranges, and conversion between each other (integer vs. floating-point)
+* Switch case: What are valid labels?
+* StringBuilder / StringBuffer methods (mutating vs. pure) including constructors
+* String methods including constructors
+* Primitive wrapper methods including constructors
+* Two-complement of integers / min-/max-Values
+* Hiding (static vs. non-static)
+
 
 Questions
 * What are valid names for variables?
