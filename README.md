@@ -473,7 +473,7 @@ class FooBar extends Foo {
   * What if multiple 
 
 # Feedback
-## Session 26.02.2018
+## Session 26.02.2018 (Foundation Test)
 * java.util.time: Repeat the main abstractions, main classes
 * Most important exceptions & when they are thrown, exception class hierarchy 
 * Java Primitive Types: What they are, ranges, and conversion between each other (integer vs. floating-point)
@@ -483,16 +483,3 @@ class FooBar extends Foo {
 * Primitive wrapper methods including constructors
 * Two-complement of integers / min-/max-Values
 * Hiding (static vs. non-static)
-
-
-Questions
-* What are valid names for variables?
-* Multiple main() methods?
-* Are packages bound to directory structure? No
-
-Topics
-* Naming: Classes, methods, fields
-* Visibility
-* Inner classes
-* Up-/Downcasting and runtime-checks
-* Bitwise operations
